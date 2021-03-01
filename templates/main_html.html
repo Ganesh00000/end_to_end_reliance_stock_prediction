@@ -1,0 +1,202 @@
+<html>
+<head>
+<title>ipl 2021 prediction</title>
+<style>
+.gg
+{
+background-color:#DFCFBE
+}
+
+table
+{
+border:1px solid white;
+border-radius:0.5em;
+}
+img
+{
+width:100%;
+height:100%;
+border-radius:2em;
+}
+select
+{
+padding:10px 5px;
+align:center;
+border:1px solid gray;
+border-radius:5em;
+background-color:white;
+width:160px;
+cursor:pointer;
+margin-right:16px;
+-webkit-appearance:none;
+text-align-last:center;
+}
+input
+{
+padding:10px 5px;
+align:center;
+border:1px solid gray;
+border-radius:5em;
+background-color:white;
+width:160px;
+cursor:pointer;
+margin-right:16px;
+text-align-last:center;
+}
+input:hover
+{
+border-color:blue;
+}
+select:hover
+{
+border-color:blue;
+}
+fieldset
+{
+background-color:none;
+border-radius:2em;
+}
+button
+{
+padding:10px 5px;
+align:center;
+border:1px solid gray;
+border-radius:5em;
+background-color:white;
+width:160px;
+cursor:pointer;
+margin-right:16px;
+text-align-last:center;
+background-color:white;
+}
+button:hover
+{
+background-color:#CDCDCD;
+}
+.result
+{
+color:red;
+font-family:sans-serif;
+text-align-last:center;
+}
+</style>
+
+</head>
+<body>
+<form action="/predict" method="POST">
+<fieldset>
+<legend>Winner Prediction</legend>
+<input type="date" placeholder="Date" name="date">
+<select name="city">
+<option disabled selected>City</option>
+<option value="Banglore">Banglore</option>
+<option value="Chandigarh">Mohali</option>
+<option value="Delhi">Delhi</option>
+<option value="Mumbai">Mumbai</option>
+<option value="jaipur">Jaipur</option>
+<option value="Chennai">Chennai</option>
+<option value="Kolkata">Kolkata</option>
+<option value="Ahmedabad">Ahmedabad</option>
+<option value="Dharamsala">Dharamsala</option>
+<option value="Hyderabad">Hyderabad</option>
+<option value="Ranchi">Ranchi</option>
+<option value="Indore">Indore</option>
+</select>
+<select name="venue">
+<option disabled selected>Venue</option>
+<option value="M Chinnaswamy Stadium">M Chinnaswamy Stadium</option>
+<option value="Punjab Cricket Association Stadium, Mohali">Punjab Cricket Association Stadium, Mohali</option>
+<option value="Feroz Shah Kotla">Feroz Shah Kotla</option>
+<option value="Wankhede Stadium">Wankhede Stadium</option>
+<option value="Sawai Mansingh Stadium">Sawai Mansingh Stadium</option>
+<option value="MA Chidambaram Stadium, Chepauk">MA Chidambaram Stadium, Chepauk</option>
+<option value="Eden Gardens">Eden Gardens</option>
+<option value="Dr DY Patil Sports Academy">Dr DY Patil Sports Academy</option>
+<option value="Sardar Patel Stadium, Motera">Sardar Patel Stadium, Motera</option>
+<option value="Himachal Pradesh Cricket Association Stadium">Himachal Pradesh Cricket Association Stadium</option>
+<option value="Subrata Roy Sahara Stadium">Subrata Roy Sahara Stadium</option>
+<option value="Rajiv Gandhi International Stadium, Uppal">Rajiv Gandhi International Stadium, Uppal</option>
+<option value="Shaheed Veer Narayan Singh International Stadium">Shaheed Veer Narayan Singh International Stadium</option>
+<option value="JSCA International Stadium Complex">JSCA International Stadium Complex</option>
+<option value="Barabati Stadium">Barabati Stadium</option>
+<option value="Maharashtra Cricket Association Stadium">Maharashtra Cricket Association Stadium</option>
+<option value="Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cricket Stadium">Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cricket Stadium</option>
+<option value="Holkar Cricket Stadium">Holkar Cricket Stadium</option>
+
+</select>
+<select name="team1">
+<option disabled selected>Team1</option>
+<option name="Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+<option name="Punjab King">Punjab King</option>
+<option name="Delhi Capitals">Delhi Capitals</option>
+<option name="Mumbai Indians">Mumbai Indians</option>
+<option name="Rajasthan Royals">Rajasthan Royals</option>
+<option name="Chennai Super Kings">Chennai Super Kings</option>
+<option name="Kolkata Knight Riders">Kolkata Knight Riders</option>
+<option name="Sunrisers Hyderabad">Sunrisers Hyderabad</option>
+</select>
+<select name="team2">
+<option disabled selected>Team2</option>
+<option name="Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+<option name="Punjab King">Punjab King</option>
+<option name="Delhi Capitals">Delhi Capitals</option>
+<option name="Mumbai Indians">Mumbai Indians</option>
+<option name="Rajasthan Royals">Rajasthan Royals</option>
+<option name="Chennai Super Kings">Chennai Super Kings</option>
+<option name="Kolkata Knight Riders">Kolkata Knight Riders</option>
+<option name="Sunrisers Hyderabad">Sunrisers Hyderabad</option>
+</select>
+<select name="toss_winner">
+<option disabled selected>Toss winner</option>
+<option name="Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+<option name="Punjab King">Punjab King</option>
+<option name="Delhi Capitals">Delhi Capitals</option>
+<option name="Mumbai Indians">Mumbai Indians</option>
+<option name="Rajasthan Royals">Rajasthan Royals</option>
+<option name="Chennai Super Kings">Chennai Super Kings</option>
+<option name="Kolkata Knight Riders">Kolkata Knight Riders</option>
+<option name="Sunrisers Hyderabad">Sunrisers Hyderabad</option>
+</select>
+<select name="toss_decision">
+<option disabled selected>Toss Decision</option>
+<option value="Bat">Bat</option>
+<option value="Bowl">Bowl</option>
+</select><br><br> 
+<button type="submit" value="Predict_winner">Predict winner
+</fieldset>
+</form>
+
+{%if data:%}
+    <div class="result">
+      <table align="center" cellpadding="10%">
+      <tr class="gg">
+      <td class="t">Date</td>
+      <td class="t">City</td>
+      <td class="t">Venue</td>
+      <td class="t">Team1</td>
+      <td class="t">Team2</td>
+      <td class="t">Toss Winner</td>
+      <td class="t">Toss Decision</td>
+      <td class="t">Winner</td>
+      </tr>
+      <tr>
+      <td>{{data[0]}}</td>  
+      <td>{{data[1]}}</td>  
+      <td>{{data[2]}}</td>  
+      <td>{{data[3]}}</td>  
+      <td>{{data[4]}}</td>  
+      <td>{{data[5]}}</td>  
+      <td>{{data[6]}}</td>
+      <td>{{data[7]}}</td>   
+      </tr> 
+      </table>
+     </div>
+{%endif%}
+<img src="static/wp4059913.jpg">
+
+</body>
+</html>
+
+
+
+
